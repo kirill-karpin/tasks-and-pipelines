@@ -23,7 +23,8 @@ Design a simple Vue.js program with a Node.js in JavaScript (ideally using Expre
     1. We do not need a fancy UI, a list where all tasks are added / removed will do 
     2. No need to implement, but explain, how you will implement pagination for Tasks list when they are selected for inclusion in Pipeline
 3. Allow user to calculate total average time of a Pipeline using Node.js to read Task.AverageTime data from MongoDB and show the result in UI 
-    1. Users can recalculate total average time if Pipeline changes b. You may choose to trigger re-calculate explicitly, or as pipeline changes 
+    1. Users can recalculate total average time if Pipeline changes 
+    2. You may choose to trigger re-calculate explicitly, or as pipeline changes 
         1. How would handle an automatic update of this time in UI? 
 4. Allow user to run the pipeline 
     1. Running the pipeline should trigger an external program from Node.js. 
