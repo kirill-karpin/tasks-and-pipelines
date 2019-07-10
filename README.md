@@ -13,7 +13,6 @@ Once the pipeline is created, users wants to do two things:
 1. Calculate the average time it takes, using average time of tasks. 
 2. Run the pipeline and store its run time. 
 
-
 __Task Requirements__ 
  
 Design a simple Vue.js program with a Node.js in JavaScript (ideally using Express) backend that uses MongoDB, which does the following:   
