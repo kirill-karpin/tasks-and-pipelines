@@ -28,9 +28,11 @@ Design a simple Vue.js program with a Node.js in JavaScript (ideally using Expre
 4. Allow user to run the pipeline 
     1. Running the pipeline should trigger an external program from Node.js. 
         1. The time Pipeline run took should be stored in DB (PipelineRunTime) 
-        2. The external program is written in C# i. Simplest implementation, program does nothing (Thread.Sleep(random)) 
-        3. You may just read the task average time from DB in C# add them as return that results in output, to be printed in UI. iii. Use async / await. 
-        4. Show “Pipeline (Name) finished” in UI, when pipeline is done
+    2. The external program is written in C# 
+        1. Simplest implementation, program does nothing (Thread.Sleep(random)) 
+        2. You may just read the task average time from DB in C# add them as return that results in output, to be printed in UI. 
+        3. Use async / await. 
+    3. Show “Pipeline (Name) finished” in UI, when pipeline is done
 
 __Bonus Task (Data Processing)__ 
  
