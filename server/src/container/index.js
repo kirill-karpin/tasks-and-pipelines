@@ -1,21 +1,31 @@
 export default class Container {
   constructor() {
-    this.services = {};
+    this.services = new Map();
   }
 
-  service(name, cb) {
-    Object.defineProperty(this, name, {
-      get: () => {
-        if (!Object.prototype.hasOwnProperty.call(this.services, name)) {
-          this.services[name] = cb(this);
-        }
+  add(name, service) {
+    if ((typeof service !== 'function') && (typeof service !== 'object')) {
+      throw new Error(`Incorrect service type ${service} : ${typeof service}`);
+    }
 
-        return this.services[name];
-      },
-      configurable: true,
-      enumerable: true,
-    });
-
+    this.services.set(name, service);
     return this;
+  }
+
+  find(name) {
+    let service = this.services.get(name);
+
+    if (typeof service === 'function') {
+      service = service(this);
+    }
+
+    return service;
+  }
+
+  addServices(services) {
+    const entries = Object.entries(services);
+    entries.forEach((item) => {
+      this.add(item[0], item[1]);
+    });
   }
 }

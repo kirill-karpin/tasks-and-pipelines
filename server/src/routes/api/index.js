@@ -1,9 +1,9 @@
 import express from 'express';
-import task from './task';
+import tasks from './tasks';
 
 const router = express.Router();
 
-router.use('/task', task);
+router.use('/tasks', tasks);
 
 router.get('/', async (req, res) => {
   res.send({ version: 0.1 });

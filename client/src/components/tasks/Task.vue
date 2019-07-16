@@ -1,16 +1,25 @@
 <template>
   <div class="task-item">
-    <div class="id"><router-link :to="`/task/${item._id}/`">{{ item._id }}</router-link> </div>
-    <div class="name">{{ item.name }}</div>
-    <div class="">{{ item.averageTime }}</div>
+    <ItemDetail :item="item" :header="header" :entity="entity" ></ItemDetail>
   </div>
 </template>
 
 <script>
+import ItemDetail from '../table/ItemDetail.vue';
+
 export default {
   name: 'Task',
+  components: { ItemDetail },
   props: ['item'],
+  data() {
+    return {
+      entity: 'task',
+      header: [
+        { label: 'ID', fieldName: '_id' },
+        { label: 'NAME', fieldName: 'name' },
+        { label: 'AVG.TIME', fieldName: 'averageTime' },
+      ],
+    };
+  },
 };
 </script>
-
-

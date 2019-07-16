@@ -1,29 +1,26 @@
 import express from 'express';
 import morgan from 'morgan';
 import createError from 'http-errors';
-import mongoose from 'mongoose';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
 import indexRouter from './routes/index';
 import apiRouter from './routes/api';
 
 const app = express();
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.set('port', '3000');
 app.use(morgan('dev'));
 
 app.listen(app.get('port'), () => {
-  global.console.log(`[OK] Server is running on http:localhost:${app.get('port')}`);
-
-  mongoose.connect('mongodb://localhost:27017/app-db', { useNewUrlParser: true })
-    .then(() => {
-      console.log('[OK] DB is running');
-    });
+  global.console.log(`[OK] Server is running on http://localhost:${app.get('port')}`);
 });
+
 app.use('/', indexRouter);
 app.use('/api/', apiRouter);
 

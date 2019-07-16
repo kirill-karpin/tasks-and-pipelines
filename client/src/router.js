@@ -2,7 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 import TaskDetail from './views/TaskDetail.vue';
-import TaskList from './views/TaskList.vue';
+import TaskNew from './views/TaskNew.vue';
+import Tasks from './views/Tasks.vue';
 import PipelineNew from './views/PipelineNew.vue';
 import About from './views/About.vue';
 
@@ -18,17 +19,22 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/task/',
-      name: 'task',
-      component: TaskList,
+      path: '/tasks/',
+      name: 'tasks',
+      component: Tasks,
     },
     {
-      path: '/task/:id/',
-      name: 'task',
+      path: '/tasks/:id/',
+      name: 'task-detail',
       component: TaskDetail,
     },
     {
-      path: '/pipeline/',
+      path: '/tasks-new/',
+      name: 'tasks-new',
+      component: TaskNew,
+    },
+    {
+      path: '/pipelines/',
       name: 'pipeline',
       component: PipelineNew,
     },
