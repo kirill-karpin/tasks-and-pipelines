@@ -32,3 +32,16 @@
   padding: 10px;
   align-content: center;
 }
+
+.btn {
+  background: #24a1b9;
+  border: 0;
+  font-size : 20px;
+  line-height: 40px;
+  border-radius: 5px;
+  color: white;
+  padding: 0 20px;
+  &.red {
+    background: brown;
+  }
+}

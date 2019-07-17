@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import mongoose, { ObjectId } from 'mongoose';
 
-const taskSchema = new mongoose.Schema({
+export const taskSchema = new mongoose.Schema({
   id: {
     type: Number,
   },
@@ -10,8 +10,15 @@ const taskSchema = new mongoose.Schema({
   averageTime: {
     type: Number,
   },
+  userCreate: {
+    type: ObjectId,
+  },
+  userUpdate: {
+    type: ObjectId,
+  },
 });
 
 const Task = mongoose.model('Task', taskSchema);
+
 
 export default Task;

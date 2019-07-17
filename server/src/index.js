@@ -5,7 +5,6 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import indexRouter from './routes/index';
-import apiRouter from './routes/api';
 
 const app = express();
 app.use(cors());
@@ -22,7 +21,6 @@ app.listen(app.get('port'), () => {
 });
 
 app.use('/', indexRouter);
-app.use('/api/', apiRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

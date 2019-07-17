@@ -7,7 +7,7 @@
         <input type="text" v-model="field.value">
       </label>
     </div>
-    <button type="submit">
+    <button type="submit" class="btn">
       Create
     </button>
   </form>

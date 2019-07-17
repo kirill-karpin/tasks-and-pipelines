@@ -1,6 +1,6 @@
 import http from '../http/client';
 
-const resource = '/pipeline';
+const resource = '/pipelines';
 
 export default {
   add(data) {
@@ -23,7 +23,7 @@ export default {
   },
   async save(data) {
     return http.request({
-      url: `${resource}/${data.id}/`,
+      url: `${resource}/`,
       method: 'post',
       data,
     });

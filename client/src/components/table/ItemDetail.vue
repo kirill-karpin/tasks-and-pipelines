@@ -6,12 +6,11 @@
         <div class="table-cell">{{ field.value }}</div>
       </div>
       <div class="table-row">
-        <button @click="deleteItem">Delete</button>
+        <button @click="deleteItem" class="btn red">Delete</button>
       </div>
     </div>
   </div>
 </template>
-
 <script>
 export default {
   name: 'ItemDetail',
@@ -43,7 +42,6 @@ export default {
   },
 };
 </script>
-
 <style scoped lang="scss">
   .table-container {
     display: flex;
@@ -65,5 +63,4 @@ export default {
       height: 40px;
     }
   }
-
 </style>

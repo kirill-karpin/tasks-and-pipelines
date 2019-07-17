@@ -5,6 +5,7 @@ import TaskDetail from './views/TaskDetail.vue';
 import TaskNew from './views/TaskNew.vue';
 import Tasks from './views/Tasks.vue';
 import PipelineNew from './views/PipelineNew.vue';
+import UsersList from './views/UsersLIst.vue';
 import About from './views/About.vue';
 
 Vue.use(Router);
@@ -30,13 +31,23 @@ export default new Router({
     },
     {
       path: '/tasks-new/',
-      name: 'tasks-new',
+      name: 'task-new',
       component: TaskNew,
     },
     {
       path: '/pipelines/',
       name: 'pipeline',
       component: PipelineNew,
+    },
+    {
+      path: '/pipeline-new/',
+      name: 'pipeline-new',
+      component: PipelineNew,
+    },
+    {
+      path: '/users/',
+      name: 'users',
+      component: UsersList,
     },
     {
       path: '/about',

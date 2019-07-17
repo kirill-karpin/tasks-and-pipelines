@@ -33,7 +33,6 @@ router.delete('/:id/', async (req, res) => {
 /* POST tasks creating. */
 router.post('/', upload.none(), async (req, res) => {
   const task = await taskRepository.create(req.body);
-  logger.debug(task);
   res.send(task);
 });
 

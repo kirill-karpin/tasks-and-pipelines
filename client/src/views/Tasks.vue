@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TasksList :items="items"></TasksList>
+    <TasksList></TasksList>
   </div>
 </template>
 
@@ -14,12 +14,6 @@ export default {
     return {
       items: [],
     };
-  },
-  async created() {
-    const result = await this.$apiService.get('task').get();
-    if (result.isStatusOk()) {
-      this.items = result.data;
-    }
   },
 };
 </script>
