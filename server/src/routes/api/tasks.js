@@ -32,19 +32,21 @@ router.delete('/:id/', async (req, res) => {
 
 /* POST tasks creating. */
 router.post('/', upload.none(), async (req, res) => {
+  const taskData = req.body;
+  taskData.userCreate = req.userContext._id;
   const task = await taskRepository.create(req.body);
   res.send(task);
 });
 
 /* PUT tasks overwrite. */
 router.put('/', (req, res) => {
-  const task = taskRepository.myMethod();
+  const task = taskRepository.update();
   res.send(task);
 });
 
 /* PATCH tasks merge. */
 router.patch('/', (req, res) => {
-  const task = taskRepository.myMethod();
+  const task = taskRepository.update();
   res.send(task);
 });
 

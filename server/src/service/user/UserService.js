@@ -6,4 +6,8 @@ export default class UserService {
   async getUserByToken(token) {
     return this.userRepository.get({ token });
   }
+
+  async listUsers() {
+    return this.userRepository.get();
+  }
 }

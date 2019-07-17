@@ -9,7 +9,7 @@ const pipelineSchema = new mongoose.Schema({
   tasks: {
     type: [taskSchema],
   },
-  avgTime: {
+  averageTime: {
     type: Number,
   },
   userCreate: {
@@ -19,12 +19,15 @@ const pipelineSchema = new mongoose.Schema({
     type: ObjectId,
   },
   isRun: {
-    type: Boolean,
+    type: { Boolean, default: false },
   },
-  runAt: {
+  createAt: {
+    type: { type: Date, default: Date.now },
+  },
+  pipelineRunTime: {
     type: { type: Date, default: null },
   },
-}, { minimize: false });
+}, { minimize: false, id: true });
 
 
 const Pipeline = mongoose.model('Pipeline', pipelineSchema);

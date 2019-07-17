@@ -45,7 +45,14 @@ export default class BaseRepository {
     this.entity.save(params);
   }
 
-  update(params) {
-    this.entity.update(params);
+  async update(condition, params) {
+    const result = new RepositoryResult();
+    try {
+      const Model = this.entity;
+      result.data = await Model.updateOne(condition, params);
+    } catch (e) {
+      result.setError(e);
+    }
+    return result;
   }
 }

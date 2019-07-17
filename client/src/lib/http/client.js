@@ -11,6 +11,13 @@ export class HttpClient {
     const result = new HttpResult();
     const request = options;
 
+    if (localStorage.getItem('TOKEN')) {
+      const token = localStorage.getItem('TOKEN');
+      request.headers = {
+        Authorization: `Bearer ${token}`,
+      };
+    }
+
     try {
       if (Object.prototype.hasOwnProperty.call(request, 'data')) {
         if (typeof request.data === 'object') {
@@ -23,8 +30,10 @@ export class HttpClient {
       } else {
         request.data = this.toFormData({});
       }
+      if (!request.baseURL) {
+        request.baseURL = this.baseUrl;
+      }
 
-      request.baseURL = this.baseUrl;
 
       const response = await axios(request);
 

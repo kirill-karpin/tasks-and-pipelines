@@ -7,8 +7,11 @@
         </div>
       </div>
       <div class="table-row" v-for="item in tableItems" :key="item.id">
-        <div class="table-cell" v-for="value in item" :key="value" v-html="value">
-        </div>
+        <template v-for="(value, index) in item">
+          <component v-if="value.component" :is="value.component" :key="index" :item="value.item">
+          </component>
+          <div v-else class="table-cell" v-html="value" :key="index"></div>
+        </template>
       </div>
     </div>
   </div>
@@ -27,6 +30,11 @@ export default {
           this.header.forEach((field) => {
             if (field.handler) {
               item[field.fieldName] = field.handler(v[field.fieldName]);
+            } else if (field.component) {
+              item[field.fieldName] = {
+                component: field.component,
+                item: v,
+              };
             } else {
               item[field.fieldName] = v[field.fieldName];
             }

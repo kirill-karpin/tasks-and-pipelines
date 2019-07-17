@@ -7,22 +7,32 @@ const userService = container.find('user-service');
 
 /** simple auth */
 router.use('/api/', async (req, res, next) => {
-  const user = await userService.getUserByToken(req.cookies.TOKEN);
-  if (user.isSuccess()) {
-    if (user.data.length === 1) {
-      req.userContext = user.data;
-      next();
+  req.userContext = null;
+  let token;
+  if (req.headers.authorization) {
+    [, token] = req.headers.authorization.split(' ');
+  }
+
+  if (token) {
+    const user = await userService.getUserByToken(token);
+    if (user.isSuccess()) {
+      if (user.data.length === 1) {
+        req.userContext = user.data.pop();
+        next();
+      } else {
+        res.sendStatus(401);
+      }
     } else {
-      res.sendStatus(401);
+      res.sendStatus(500);
     }
-  } else {
-    res.sendStatus(500);
+  } else if (req.originalUrl === '/api/') {
+    next();
   }
 }, apiRouter);
 
 /* GET home page. */
-router.get('/', (req, res) => {
-  res.send({ title: 'hello' });
+router.get('/', async (req, res) => {
+  res.send({ index: 'hello world' });
 });
 
 module.exports = router;

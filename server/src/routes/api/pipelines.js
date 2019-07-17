@@ -24,8 +24,24 @@ router.get('/:id/', async (req, res) => {
 
 /* POST tasks creating. */
 router.post('/', upload.none(), async (req, res) => {
+  const pipelineData = req.body;
+  pipelineData.userCreate = req.userContext._id;
   const pipeline = await pipelineRepository.create(req.body);
   res.send(pipeline);
 });
+
+/* PATCH tasks creating. */
+router.patch('/:id/', upload.none(), async (req, res) => {
+  const pipelineData = req.body;
+  pipelineData.userUpdate = req.userContext._id;
+  const pipeline = await pipelineRepository.update(req.params.id, pipelineData);
+  res.send(pipeline);
+});
+
+router.get('/:id/run/', upload.none(), async (req, res) => {
+  const pipeline = await pipelineRepository.run(req.params.id);
+  res.send(pipeline);
+});
+
 
 module.exports = router;

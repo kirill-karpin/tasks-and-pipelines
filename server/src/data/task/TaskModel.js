@@ -16,7 +16,7 @@ export const taskSchema = new mongoose.Schema({
   userUpdate: {
     type: ObjectId,
   },
-});
+}, { minimize: false, id: true });
 
 const Task = mongoose.model('Task', taskSchema);
 

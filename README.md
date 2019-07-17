@@ -16,10 +16,10 @@ Once the pipeline is created, users wants to do two things:
 __Task Requirements__ 
  
 Design a simple Vue.js program with a Node.js in JavaScript (ideally using Express) backend that uses MongoDB, which does the following:   
-1. Allows user to create a Task and save it in MongoDB 
++1. Allows user to create a Task and save it in MongoDB 
     1. No edit is needed for Tasks 
     2. Optional, user can delete a Task 
-2. Allows user to create a Pipeline and save it in MongoDB
++2. Allows user to create a Pipeline and save it in MongoDB
     1. We do not need a fancy UI, a list where all tasks are added / removed will do 
     2. No need to implement, but explain, how you will implement pagination for Tasks list when they are selected for inclusion in Pipeline
 3. Allow user to calculate total average time of a Pipeline using Node.js to read Task.AverageTime data from MongoDB and show the result in UI 

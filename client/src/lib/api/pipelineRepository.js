@@ -21,11 +21,18 @@ export default {
       url,
     });
   },
-  async save(data) {
+  async save(id, data) {
     return http.request({
-      url: `${resource}/`,
-      method: 'post',
+      url: `${resource}/${id}/`,
+      method: 'patch',
       data,
+    });
+  },
+
+  async run(id) {
+    return http.request({
+      url: `${resource}/${id}/run/`,
+      method: 'get',
     });
   },
 
