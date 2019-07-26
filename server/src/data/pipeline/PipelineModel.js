@@ -19,13 +19,19 @@ const pipelineSchema = new mongoose.Schema({
     type: ObjectId,
   },
   isRun: {
-    type: { Boolean, default: false },
+    type: Boolean, default: false,
   },
   createAt: {
-    type: { type: Date, default: Date.now },
+    type: Date, default: Date.now,
   },
   pipelineRunTime: {
-    type: { type: Date, default: null },
+    type: Date, default: null,
+  },
+  pipelineUserRun: {
+    type: ObjectId,
+  },
+  pipelineFinishTime: {
+    type: Date, default: null,
   },
 }, { minimize: false, id: true });
 

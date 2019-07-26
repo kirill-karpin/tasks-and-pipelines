@@ -13,4 +13,8 @@ export default class RepositoryResult {
     this.err = err;
     this.status = false;
   }
+
+  count() {
+    return this.data.length;
+  }
 }

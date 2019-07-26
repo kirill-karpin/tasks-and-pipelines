@@ -9,6 +9,7 @@ const upload = multer();
 
 const router = express.Router();
 const pipelineRepository = container.find('pipeline-repository');
+const workspaceService = container.find('workspace-service');
 
 /* POST tasks listing. */
 router.get('/', async (req, res) => {
@@ -39,7 +40,11 @@ router.patch('/:id/', upload.none(), async (req, res) => {
 });
 
 router.get('/:id/run/', upload.none(), async (req, res) => {
-  const pipeline = await pipelineRepository.run(req.params.id);
+  const params = {
+    id: req.params.id,
+    userId: req.userContext._id,
+  };
+  const pipeline = await workspaceService.runPipeline(params);
   res.send(pipeline);
 });
 

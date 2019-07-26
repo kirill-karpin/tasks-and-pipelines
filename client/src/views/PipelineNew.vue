@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     create() {
-      this.$apiService.get('pipeline').save(this.request);
+      this.$apiService.get('pipeline').add(this.request);
     },
   },
 

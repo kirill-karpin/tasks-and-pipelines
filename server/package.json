@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "rimraf ./dist && babel -d ./dist ./src -s && node dist/index.js",
-    "dev": "nodemon dev.js",
+    "dev": "nodemon   dev.js",
     "dbg": "node dev.js",
     "lint:js": "eslint ./src",
     "lint-staged": "lint-staged",
